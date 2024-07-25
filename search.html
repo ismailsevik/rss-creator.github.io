@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Statik blog projesi." />
+    <title>Statik</title>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #181818;        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .site-title {
+            margin: 0;
+            color: #fff;
+            font-size: 18px;
+        }
+    
+        .post {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .post-title {
+            flex: 1;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #fff;
+            text-decoration: none;
+        }
+        .post-title:hover {
+            text-decoration: underline;
+        }
+        .post-date {
+            flex: 0 0 150px;
+            text-align: right;
+            color: #fff;
+        }
+            .search {
+            display: flex;
+            align-items: center;
+        }
+        .search input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+            width: 95%;
+        }
+        .search-icon {
+            cursor: pointer;
+            width:50px;
+             text-align:center;  
+             margin-top:0; 
+             color:#fff;
+             padding:4px;
+             border:1px solid #fff;
+             border-radius:4px; 
+}
+
+        /* Responsive styles */
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="site-title"> İsmail Şevik</h1>
+           <!--  <div class="search">
+                <input type="text" id="searchInput" placeholder="Ara...">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+            </div>-->
+        </div>
+             <div class="search">
+                <input type="text" id="searchInput" placeholder="Ara...">
+                <div class="search-icon"><!--<i class="fas fa-search"></i> -->Ara</div>
+            </div><br />
+        
+        <div class="main-content">
+            <div class="post">
+                <a href="#" class="post-title">Seni seviyorum adam</a>
+                <div class="post-date">25 Haziran 2024</div>
+            </div>
+            <div class="post">
+                <a href="#" class="post-title">Statikle başlayın</a>
+                <div class="post-date">24 Haziran 2024</div>
+            </div>
+            <div class="post">
+                <a href="#" class="post-title">Gereksizin yol haritası</a>
+                <div class="post-date">23 Haziran 2024</div>
+            </div>
+            <!-- Buraya istediğiniz kadar post ekleyebilirsiniz -->
+        </div>
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Hamburger menü için toggle işlemi
+            $('.menu-icon').click(function() {
+                $('.menu').toggleClass('active');
+            });
+
+            // Arama ikonuna tıklama işlemi
+            $('.search-icon').click(function() {
+                var searchTerm = $('#searchInput').val().toLowerCase();
+                $('.post').each(function() {
+                    var title = $(this).find('.post-title').text().toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
