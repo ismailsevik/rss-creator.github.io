@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="description" content="Simple RSS item creator. Copyright by İsmail Şevik" />
+  <meta name"author" content="İsmail Şevik" />
+  <title> Simple RSS Item Creator</title>
+  
+  </head>
+  <body><h2> Simple RSS  Item Creator</h2>
+
+    <form id="rssForm">
+        <label for="itemTitle">Öğe Başlığı:</label><br>
+        <input type="text" id="itemTitle" name="itemTitle" required><br><br>
+        
+        <label for="itemLink">Öğe Linki:</label><br>
+        <input type="url" id="itemLink" name="itemLink" required><br><br>
+        
+        <label for="itemDescription">Öğe Açıklaması:</label><br>
+        <textarea id="itemDescription" name="itemDescription" rows="4" required></textarea><br><br>
+        
+        <label for="itemDate">Tarih:</label><br>
+        <input type="datetime-local" id="itemDate" name="itemDate" required><br><br>
+        
+        <button class="button" type="button" onclick="generateRSS()">RSS Oluştur</button>
+    </form>
+
+    <div id="rssOutput">
+        <h3>Oluşturulan RSS:</h3>
+        <pre id="rssContent"></pre>
+    </div>
+  
+
+    <script>
+        function generateRSS() {
+            var itemTitle = document.getElementById('itemTitle').value;
+            var itemLink = document.getElementById('itemLink').value;
+            var itemDescription = document.getElementById('itemDescription').value;
+            var itemDate = document.getElementById('itemDate').value;
+
+            var rssContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
+            rssContent += '<rss version="2.0">\n';
+            rssContent += '  <channel>\n';
+            rssContent += '    <title>RSS Feed</title>\n';
+            rssContent += '    <link>https://example.com/rss</link>\n';
+            rssContent += '    <description>İsmail Şevik</description>\n';
+
+            rssContent += '    <item>\n';
+            rssContent += '      <title>' + escapeHtml(itemTitle) + '</title>\n';
+            rssContent += '      <link>' + escapeHtml(itemLink) + '</link>\n';
+            rssContent += '      <description>' + escapeHtml(itemDescription) + '</description>\n';
+            rssContent += '      <pubDate>' + (new Date(itemDate)).toUTCString() + '</pubDate>\n';
+            rssContent += '    </item>\n';
+
+            rssContent += '  </channel>\n';
+            rssContent += '</rss>';
+
+            document.getElementById('rssContent').textContent = rssContent;
+        }
+
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+              </body>
+              </html>
+
