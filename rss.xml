@@ -1,1 +1,14 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>RSS Creator with İsmail Şevik</title>
+    <link>https://ismailsevik.github.io/rss-creator.github.io/</link>
+    <description>RSS Creator for Static Websites</description>
+    <item>
+      <title>Information</title>
+      <link>https://ismailsevik.github.io/rss-creator.github.io/</link>
+      <description>Rss Creator for Static Websites</description>
+      <pubDate>Sun, 28 Jul 2024 09:50:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
